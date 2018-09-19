@@ -89,7 +89,9 @@ export class CKEditorComponent implements OnChanges, AfterViewInit {
     if (this.instance) {
       setTimeout(() => {
         this.instance.removeAllListeners();
-        CKEDITOR.instances[this.instance.name].destroy();
+        //Handle this inside of your root component.
+        if(CKEDITOR.instances[this.instance.name] != null)
+          CKEDITOR.instances[this.instance.name].destroy();
         this.instance.destroy();
         this.instance = null;
       });
